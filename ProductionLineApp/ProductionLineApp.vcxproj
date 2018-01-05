@@ -147,8 +147,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ProductionLine.h" />
     <ClInclude Include="ProductionLineApp.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="ProductionLineStatistics.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
