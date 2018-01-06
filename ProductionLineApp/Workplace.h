@@ -4,12 +4,15 @@
 class Workplace
 {
 public:
-	Workplace();
-	~Workplace();
 	bool isEmpty;
 	bool isBlocked;
 	bool isProductProc;
 	Product procProduct;
+
+	Workplace();
+	~Workplace();
+
+	bool ProcessProduct();
 private:
 
 };

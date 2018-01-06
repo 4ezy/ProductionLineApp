@@ -6,10 +6,15 @@
 class WorkplaceLine
 {
 public:
-	WorkplaceLine();
-	~WorkplaceLine();
 	Workplace workplace;
 	std::queue<Product> products;
+
+	WorkplaceLine();
+	~WorkplaceLine();
+
+	bool PutProductToWorkplace();
+	bool PutProductToWorkplaceLine(
+		WorkplaceLine workplaceLine);
 private:
 
 };

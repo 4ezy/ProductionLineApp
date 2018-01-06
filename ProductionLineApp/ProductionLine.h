@@ -8,11 +8,16 @@
 class ProductionLine
 {
 public:
-	ProductionLine();
-	~ProductionLine();
 	std::vector<WorkplaceLine> workplaceLines;
 	std::queue<Product> deferredProducts;
 	Statistics statistics;
+
+	ProductionLine();
+	~ProductionLine();
+
+	bool PutNewProduct();
+	bool DeferProduct(Product product);
+	bool ReleaseProduct();
 private:
 
 };
