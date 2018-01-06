@@ -2,11 +2,11 @@
 
 struct Statistics
 {
-	double fstWorkplaceLoad;	// процент загрузки рабочих мест
-	double sndWorkplaceLoad;
-	double avgProdProcTime;	// в секундах (после запятой проценты миллисекунд, например 2,17 секунд)
+	float fstWorkplaceLoad;	// процент загрузки рабочих мест
+	float sndWorkplaceLoad;
+	float avgProdProcTime;	// в секундах (после запятой проценты миллисекунд, например 2,17 секунд)
 	int deferredProductsCount;
 	int fstWorkplaceAvgQueue;
 	int sndWorkplaceAvgQueue;
-	double fstWorkplaceBlockingTime;	// в секундах (после запятой проценты миллисекунд, например 2,17 секунд)
+	float fstWorkplaceBlockingTime;	// в секундах (после запятой проценты миллисекунд, например 2,17 секунд)
 };

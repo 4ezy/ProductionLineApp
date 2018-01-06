@@ -4,23 +4,22 @@
 class Workplace
 {
 public:
-	bool isEmpty;
-	bool isBlocked;
-	bool isProductProc;
-	Product procProduct;
-
 	Workplace();
 	~Workplace();
 
 	bool ProcessProduct();
+
+	void SetIsEmpty(bool);
+	bool GetIsEmpty();
+	void SetIsBlocked(bool);
+	bool GetIsBlocked();
+	void SetIsProductProc(bool);
+	bool GetIsProductProc();
+	void SetProcProduct(Product);
+	Product GetProcProduct();
 private:
-
+	bool isEmpty;
+	bool isBlocked;
+	bool isProductProc;
+	Product procProduct;
 };
-
-//Workplace::Workplace()
-//{
-//}
-//
-//Workplace::~Workplace()
-//{
-//}

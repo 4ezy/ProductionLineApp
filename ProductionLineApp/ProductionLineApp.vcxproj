@@ -158,6 +158,9 @@
     <ClInclude Include="WorkplaceLine.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ProductionLine.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="ProductionLineApp.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
