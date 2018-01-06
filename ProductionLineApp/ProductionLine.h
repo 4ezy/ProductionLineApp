@@ -1,14 +1,18 @@
 #pragma once
 #include <queue>
-#include "ProductionLineStatistics.h"
+#include <vector>
+#include "WorkplaceLine.h"
+#include "Product.h"
+#include "Statistics.h"
 
 class ProductionLine
 {
 public:
 	ProductionLine();
 	~ProductionLine();
-	//std::queue<Products> deferredProducts;	// отложенные изделия
-	ProductionLineStatistics statistics;
+	std::vector<WorkplaceLine> workplaceLines;
+	std::queue<Product> deferredProducts;
+	Statistics statistics;
 private:
 
 };

@@ -30,7 +30,16 @@
     <ClInclude Include="ProductionLine.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="ProductionLineStatistics.h">
+    <ClInclude Include="WorkplaceLine.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Workplace.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Product.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Statistics.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
