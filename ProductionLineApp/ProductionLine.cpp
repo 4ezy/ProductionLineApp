@@ -33,13 +33,13 @@ void ProductionLine::DeferProduct(Product product)
 	this->deferredProducts.push(product);
 }
 
-bool ProductionLine::ReleaseProduct()
+bool ProductionLine::ReleaseProcessedProduct()
 {
 	if (this->workplaceLines[this->workplaceLines.size() - 1].
-		GetProducts().back().isProcessed)
+		GetWorkplace().GetIsProductProc())
 	{
-		this->workplaceLines[this->workplaceLines.size() - 1].
-			GetProducts().pop();
+		this->workplaceLines[this->workplaceLines.size() - 1].GetWorkplace().SetIsEmpty(true);
+		this->workplaceLines[this->workplaceLines.size() - 1].GetWorkplace().SetIsProductProc(false);
 		return true;
 	}
 	else

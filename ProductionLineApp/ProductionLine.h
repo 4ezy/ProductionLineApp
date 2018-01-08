@@ -14,7 +14,7 @@ public:
 
 	bool PutNewProduct(Product product);
 	void DeferProduct(Product product);
-	bool ReleaseProduct();
+	bool ReleaseProcessedProduct();
 
 	void SetSimulationTime(unsigned long simulationTime);
 	unsigned long GetSimulationTime();
