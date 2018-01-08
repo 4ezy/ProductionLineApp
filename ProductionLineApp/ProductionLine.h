@@ -8,23 +8,27 @@
 class ProductionLine
 {
 public:
-	ProductionLine();
+	ProductionLine(int workplaceLineCount, int workplaceLineCapacity, unsigned long putProductTimeInterval,
+		unsigned long workplaceProcTime, unsigned long simulationTime);
 	~ProductionLine();
 
-	bool PutNewProduct();
-	bool DeferProduct(Product);
+	bool PutNewProduct(Product product);
+	void DeferProduct(Product product);
 	bool ReleaseProduct();
 
-	void SetCapacity(int);
-	int GetCapacity();
-	void SetWorkplaceLines(std::vector<WorkplaceLine>);
+	void SetSimulationTime(unsigned long simulationTime);
+	unsigned long GetSimulationTime();
+	void SetPutProductTimeInterval(unsigned long putProductTimeInterval);
+	unsigned long GetPutProductTimeInterval();
+	void SetWorkplaceLines(std::vector<WorkplaceLine> workplaceLines);
 	std::vector<WorkplaceLine> GetWorkplaceLines();
-	void SetDefferedProducts(std::queue<Product>);
+	void SetDeferredProducts(std::queue<Product> deferredProducts);
 	std::queue<Product> GetDefferedProducts();
-	void SetStatistics(Statistics);
+	void SetStatistics(Statistics statistics);
 	Statistics GetStatistics();
 private:
-	int capacity;
+	unsigned long simulationTime;
+	unsigned long putProductTimeInterval;
 	std::vector<WorkplaceLine> workplaceLines;
 	std::queue<Product> deferredProducts;
 	Statistics statistics;
