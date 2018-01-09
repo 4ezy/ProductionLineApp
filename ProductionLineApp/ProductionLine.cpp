@@ -1,13 +1,18 @@
 #include "ProductionLine.h"
 
-ProductionLine::ProductionLine(int workplaceLineCount, int workplaceLineCapacity,
+ProductionLine::ProductionLine(int workplaceLineCount, int productionLineCapacity,
 	unsigned long putProductTimeInterval, unsigned long workplaceProcTime, unsigned long simulationTime)
 {
 	this->putProductTimeInterval = putProductTimeInterval;
 	this->simulationTime = simulationTime;
 
+	int workplaceLineCapacity = productionLineCapacity / workplaceLineCount;
+
 	for (int i = 0; i < workplaceLineCount; i++)
 	{
+		if (i == workplaceLineCount - 1)
+			workplaceLineCapacity += productionLineCapacity % workplaceLineCount;
+
 		this->workplaceLines.push_back(WorkplaceLine(workplaceLineCapacity, workplaceProcTime));
 	}
 }
