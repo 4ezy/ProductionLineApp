@@ -1,6 +1,6 @@
 #include "ProductionLine.h"
 
-ProductionLine::ProductionLine(int workplaceLineCount, int productionLineCapacity,
+ProductionLine::ProductionLine(unsigned int workplaceLineCount, unsigned int productionLineCapacity,
 	unsigned long putProductTimeInterval, unsigned long workplaceProcTime, unsigned long simulationTime)
 {
 	this->putProductTimeInterval = putProductTimeInterval;

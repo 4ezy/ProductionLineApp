@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "WorkplaceLine.h"
 
-WorkplaceLine::WorkplaceLine(int workplaceLineCapacity, unsigned long workplaceProcTime)
+WorkplaceLine::WorkplaceLine(unsigned int workplaceLineCapacity, unsigned long workplaceProcTime)
 	: workplace(workplaceProcTime)
 {
 	this->workplaceLineCapacity = workplaceLineCapacity;
@@ -37,12 +37,12 @@ bool WorkplaceLine::PutProductToWorkplaceLine(WorkplaceLine workplaceLine)
 		return false;
 }
 
-void WorkplaceLine::SetWorkplaceLineCapacity(int workplaceLineCapacity)
+void WorkplaceLine::SetWorkplaceLineCapacity(unsigned int workplaceLineCapacity)
 {
 	this->workplaceLineCapacity = workplaceLineCapacity;
 }
 
-int WorkplaceLine::GetWorkplaceLineCapacity()
+unsigned int WorkplaceLine::GetWorkplaceLineCapacity()
 {
 	return this->workplaceLineCapacity;
 }
