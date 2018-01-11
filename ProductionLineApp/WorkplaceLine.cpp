@@ -4,7 +4,7 @@
 WorkplaceLine::WorkplaceLine(unsigned int workplaceLineCapacity, unsigned long workplaceProcTime)
 	: workplace(workplaceProcTime)
 {
-	this->workplaceLineCapacity = workplaceLineCapacity;
+	this->workplaceLineCapacity = workplaceLineCapacity - 1;
 }
 
 WorkplaceLine::~WorkplaceLine()
@@ -39,7 +39,7 @@ bool WorkplaceLine::PutProductToWorkplaceLine(WorkplaceLine workplaceLine)
 
 void WorkplaceLine::SetWorkplaceLineCapacity(unsigned int workplaceLineCapacity)
 {
-	this->workplaceLineCapacity = workplaceLineCapacity;
+	this->workplaceLineCapacity = workplaceLineCapacity - 1;
 }
 
 unsigned int WorkplaceLine::GetWorkplaceLineCapacity()

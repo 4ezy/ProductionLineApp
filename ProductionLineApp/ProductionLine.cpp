@@ -1,5 +1,7 @@
 #include "ProductionLine.h"
 
+ProductionLine::ProductionLine() { };
+
 ProductionLine::ProductionLine(unsigned int workplaceLineCount, unsigned int productionLineCapacity,
 	unsigned long putProductTimeInterval, unsigned long workplaceProcTime, unsigned long simulationTime)
 {

@@ -8,6 +8,7 @@
 class ProductionLine
 {
 public:
+	ProductionLine();
 	ProductionLine(unsigned int workplaceLineCount, unsigned int workplaceLineCapacity,
 		unsigned long putProductTimeInterval, unsigned long workplaceProcTime, unsigned long simulationTime);
 	~ProductionLine();
