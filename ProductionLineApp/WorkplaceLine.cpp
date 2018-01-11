@@ -44,7 +44,7 @@ void WorkplaceLine::SetWorkplaceLineCapacity(unsigned int workplaceLineCapacity)
 
 unsigned int WorkplaceLine::GetWorkplaceLineCapacity()
 {
-	return this->workplaceLineCapacity;
+	return this->workplaceLineCapacity + 1;
 }
 
 void WorkplaceLine::SetWorkplace(Workplace workplace)
