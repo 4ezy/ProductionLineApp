@@ -8,12 +8,16 @@ ProductionLine::ProductionLine(unsigned int workplaceLineCount, unsigned int pro
 	this->putProductTimeInterval = putProductTimeInterval;
 	this->simulationTime = simulationTime;
 
-	int workplaceLineCapacity = productionLineCapacity / workplaceLineCount;
+	int workplaceLineCapacity = productionLineCapacity / workplaceLineCount - 1;
+	workplaceLineCapacity = workplaceLineCapacity < 0 ? 0 : workplaceLineCapacity;
 
-	for (int i = 0; i < workplaceLineCount; i++)
+	for (unsigned int i = 0; i < workplaceLineCount; i++)
 	{
 		if (i == workplaceLineCount - 1)
-			workplaceLineCapacity += productionLineCapacity % workplaceLineCount;
+		{
+			int res = productionLineCapacity % workplaceLineCount - 1;
+			workplaceLineCapacity += res < 0 ? 0 : res;
+		}
 
 		this->workplaceLines.push_back(WorkplaceLine(workplaceLineCapacity, workplaceProcTime));
 	}
