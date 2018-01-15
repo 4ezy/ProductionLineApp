@@ -1,5 +1,4 @@
 #pragma once
-#include <queue>
 #include <vector>
 #include "WorkplaceLine.h"
 #include "Product.h"
@@ -23,14 +22,14 @@ public:
 	unsigned long GetPutProductTimeInterval();
 	void SetWorkplaceLines(std::vector<WorkplaceLine> workplaceLines);
 	std::vector<WorkplaceLine> GetWorkplaceLines();
-	void SetDeferredProducts(std::queue<Product> deferredProducts);
-	std::queue<Product> GetDefferedProducts();
+	std::vector<Product> GetDefferedProducts();
 	void SetStatistics(Statistics statistics);
 	Statistics GetStatistics();
 private:
 	unsigned long simulationTime;
 	unsigned long putProductTimeInterval;
 	std::vector<WorkplaceLine> workplaceLines;
-	std::queue<Product> deferredProducts;
+	std::vector<Product> deferredProducts;
 	Statistics statistics;
+	void SetDeferredProducts(std::vector<Product> deferredProducts);
 };

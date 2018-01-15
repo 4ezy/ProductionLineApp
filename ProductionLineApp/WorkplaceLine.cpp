@@ -18,7 +18,7 @@ bool WorkplaceLine::PutProductToWorkplace()
 		this->workplace.SetProcProduct(this->products.back());
 		this->workplace.SetIsEmpty(false);
 		this->workplace.SetIsProductProc(true);
-		this->products.pop();
+		this->products.pop_back();
 		return true;
 	}
 	else
@@ -29,7 +29,7 @@ bool WorkplaceLine::PutProductToWorkplaceLine(WorkplaceLine workplaceLine)
 {
 	if (!this->workplace.GetIsEmpty() && !this->workplace.GetIsProductProc())
 	{
-		workplaceLine.products.push(this->workplace.GetProcProduct());
+		workplaceLine.products.insert(workplaceLine.products.begin(), this->workplace.GetProcProduct());
 		this->workplace.SetIsEmpty(true);
 		return true;
 	}
@@ -57,12 +57,12 @@ Workplace WorkplaceLine::GetWorkplace()
 	return this->workplace;
 }
 
-void WorkplaceLine::SetProducts(std::queue<Product> products)
+void WorkplaceLine::SetProducts(std::vector<Product> products)
 {
 	this->products = products;
 }
 
-std::queue<Product> WorkplaceLine::GetProducts()
+std::vector<Product> WorkplaceLine::GetProducts()
 {
 	return this->products;
 }

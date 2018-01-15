@@ -32,7 +32,27 @@ bool ProductionLine::PutNewProduct(Product product)
 	if (this->workplaceLines[0].GetProducts().size() <
 		this->workplaceLines[0].GetWorkplaceLineCapacity())
 	{
-		this->workplaceLines[0].GetProducts().push(product);
+		if (this->workplaceLines[0].GetProducts().size() != 0)
+		{
+			std::vector<Product> products = this->workplaceLines[0].GetProducts();
+			products.insert(products.begin(), product);
+			this->workplaceLines[0].SetProducts(products);
+		}
+		else
+		{
+			std::vector<Product> products = this->workplaceLines[0].GetProducts();
+			products.push_back(product);
+			this->workplaceLines[0].SetProducts(products);
+		}
+		return true;
+	}
+	else if (!this->workplaceLines[0].GetWorkplace().GetIsBlocked() &&
+		this->workplaceLines[0].GetWorkplace().GetIsProductProc() &&
+		this->workplaceLines[0].GetWorkplace().GetIsEmpty())
+	{
+		this->workplaceLines[0].GetWorkplace().SetProcProduct(product);
+		this->workplaceLines[0].GetWorkplace().SetIsEmpty(false);
+		this->workplaceLines[0].GetWorkplace().SetIsProductProc(true);
 		return true;
 	}
 	else
@@ -41,7 +61,16 @@ bool ProductionLine::PutNewProduct(Product product)
 
 void ProductionLine::DeferProduct(Product product)
 {
-	this->deferredProducts.push(product);
+	if (this->deferredProducts.size() != 0)
+	{
+		std::vector<Product> defProd = this->deferredProducts;
+		defProd.insert(defProd.begin(), product);
+		this->deferredProducts = defProd;
+	}
+	else
+	{
+		this->deferredProducts.push_back(product);
+	}
 }
 
 bool ProductionLine::ReleaseProcessedProduct()
@@ -87,12 +116,12 @@ std::vector<WorkplaceLine> ProductionLine::GetWorkplaceLines()
 	return this->workplaceLines;
 }
 
-void ProductionLine::SetDeferredProducts(std::queue<Product> deferredProducts)
+void ProductionLine::SetDeferredProducts(std::vector<Product> deferredProducts)
 {
 	this->deferredProducts = deferredProducts;
 }
 
-std::queue<Product> ProductionLine::GetDefferedProducts()
+std::vector<Product> ProductionLine::GetDefferedProducts()
 {
 	return this->deferredProducts;
 }
