@@ -10,7 +10,7 @@ public:
 	~WorkplaceLine();
 
 	bool PutProductToWorkplace();
-	bool PutProductToWorkplaceLine(WorkplaceLine workplaceLine);
+	bool PutProductToWorkplaceLine(WorkplaceLine *workplaceLine);
 
 	void SetWorkplaceLineCapacity(unsigned int workplaceLineCapacity);
 	unsigned int GetWorkplaceLineCapacity();

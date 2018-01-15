@@ -78,8 +78,9 @@ bool ProductionLine::ReleaseProcessedProduct()
 	if (this->workplaceLines[this->workplaceLines.size() - 1].
 		GetWorkplace().GetIsProductProc())
 	{
-		this->workplaceLines[this->workplaceLines.size() - 1].GetWorkplace().SetIsEmpty(true);
-		this->workplaceLines[this->workplaceLines.size() - 1].GetWorkplace().SetIsProductProc(false);
+		Workplace wp = this->workplaceLines[this->workplaceLines.size() - 1].GetWorkplace();
+		wp.SetIsEmpty(true);
+		this->workplaceLines[this->workplaceLines.size() - 1].SetWorkplace(wp);
 		return true;
 	}
 	else
