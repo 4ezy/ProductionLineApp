@@ -15,9 +15,11 @@ public:
 	void SetWorkplaceLineCapacity(unsigned int workplaceLineCapacity);
 	unsigned int GetWorkplaceLineCapacity();
 	void SetWorkplace(Workplace workplace);
-	void SetProducts(std::vector<Product> products);
 	Workplace GetWorkplace();
+	Workplace* GetWorkplaceRef();
+	void SetProducts(std::vector<Product> products);
 	std::vector<Product> GetProducts();
+	std::vector<Product>* GetProductsRef();
 private:
 	unsigned int workplaceLineCapacity;
 	Workplace workplace;

@@ -66,6 +66,11 @@ Workplace WorkplaceLine::GetWorkplace()
 	return this->workplace;
 }
 
+Workplace* WorkplaceLine::GetWorkplaceRef()
+{
+	return &this->workplace;
+}
+
 void WorkplaceLine::SetProducts(std::vector<Product> products)
 {
 	this->products = products;
@@ -74,4 +79,9 @@ void WorkplaceLine::SetProducts(std::vector<Product> products)
 std::vector<Product> WorkplaceLine::GetProducts()
 {
 	return this->products;
+}
+
+std::vector<Product>* WorkplaceLine::GetProductsRef()
+{
+	return &this->products;
 }

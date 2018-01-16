@@ -22,7 +22,9 @@ public:
 	unsigned long GetPutProductTimeInterval();
 	void SetWorkplaceLines(std::vector<WorkplaceLine> workplaceLines);
 	std::vector<WorkplaceLine> GetWorkplaceLines();
-	std::vector<Product> GetDefferedProducts();
+	std::vector<WorkplaceLine>* GetWorkplaceLinesRef();
+	std::vector<Product> GetDeferredProducts();
+	std::vector<Product>* GetDeferredProductsRef();
 	void SetStatistics(Statistics statistics);
 	Statistics GetStatistics();
 private:

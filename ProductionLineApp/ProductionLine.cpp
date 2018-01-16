@@ -34,25 +34,13 @@ bool ProductionLine::PutNewProduct(Product product)
 	{
 		if (this->workplaceLines[0].GetProducts().size() != 0)
 		{
-			std::vector<Product> products = this->workplaceLines[0].GetProducts();
-			products.insert(products.begin(), product);
-			this->workplaceLines[0].SetProducts(products);
+			this->workplaceLines[0].GetProductsRef()->insert(
+				this->workplaceLines[0].GetProductsRef()->begin(), product);
 		}
 		else
 		{
-			std::vector<Product> products = this->workplaceLines[0].GetProducts();
-			products.push_back(product);
-			this->workplaceLines[0].SetProducts(products);
+			this->workplaceLines[0].GetProductsRef()->push_back(product);
 		}
-		return true;
-	}
-	else if (!this->workplaceLines[0].GetWorkplace().GetIsBlocked() &&
-		this->workplaceLines[0].GetWorkplace().GetIsProductProc() &&
-		this->workplaceLines[0].GetWorkplace().GetIsEmpty())
-	{
-		this->workplaceLines[0].GetWorkplace().SetProcProduct(product);
-		this->workplaceLines[0].GetWorkplace().SetIsEmpty(false);
-		this->workplaceLines[0].GetWorkplace().SetIsProductProc(true);
 		return true;
 	}
 	else
@@ -63,9 +51,7 @@ void ProductionLine::DeferProduct(Product product)
 {
 	if (this->deferredProducts.size() != 0)
 	{
-		std::vector<Product> defProd = this->deferredProducts;
-		defProd.insert(defProd.begin(), product);
-		this->deferredProducts = defProd;
+		this->deferredProducts.insert(this->deferredProducts.begin(), product);
 	}
 	else
 	{
@@ -75,12 +61,10 @@ void ProductionLine::DeferProduct(Product product)
 
 bool ProductionLine::ReleaseProcessedProduct()
 {
-	if (this->workplaceLines[this->workplaceLines.size() - 1].
-		GetWorkplace().GetIsProductProc())
+	if (!this->workplaceLines[this->workplaceLines.size() - 1].GetWorkplace().GetIsEmpty() &&
+		this->workplaceLines[this->workplaceLines.size() - 1].GetWorkplace().GetProcProduct().isProcessed)
 	{
-		Workplace wp = this->workplaceLines[this->workplaceLines.size() - 1].GetWorkplace();
-		wp.SetIsEmpty(true);
-		this->workplaceLines[this->workplaceLines.size() - 1].SetWorkplace(wp);
+		this->workplaceLines[this->workplaceLines.size() - 1].GetWorkplaceRef()->SetIsEmpty(true);
 		return true;
 	}
 	else
@@ -117,14 +101,24 @@ std::vector<WorkplaceLine> ProductionLine::GetWorkplaceLines()
 	return this->workplaceLines;
 }
 
+std::vector<WorkplaceLine>* ProductionLine::GetWorkplaceLinesRef()
+{
+	return &this->workplaceLines;
+}
+
 void ProductionLine::SetDeferredProducts(std::vector<Product> deferredProducts)
 {
 	this->deferredProducts = deferredProducts;
 }
 
-std::vector<Product> ProductionLine::GetDefferedProducts()
+std::vector<Product> ProductionLine::GetDeferredProducts()
 {
 	return this->deferredProducts;
+}
+
+std::vector<Product>* ProductionLine::GetDeferredProductsRef()
+{
+	return &this->deferredProducts;
 }
 
 void ProductionLine::SetStatistics(Statistics statistics)
