@@ -17,6 +17,7 @@ public:
 	bool GetIsProductProc();
 	void SetProcProduct(Product procProduct);
 	Product GetProcProduct();
+	Product* GetProcProductRef();
 	void SetProcTime(unsigned long procTime);
 	unsigned long GetProcTime();
 private:

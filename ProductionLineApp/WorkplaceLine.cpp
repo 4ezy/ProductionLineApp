@@ -14,11 +14,10 @@ WorkplaceLine::~WorkplaceLine()
 bool WorkplaceLine::PutProductToWorkplace()
 {
 	if (this->workplace.GetIsEmpty() && !this->workplace.GetIsBlocked() &&
-		this->products.size() != 0)
+		this->products.size() > 0)
 	{
 		this->workplace.SetProcProduct(this->products.back());
 		this->workplace.SetIsEmpty(false);
-		//this->workplace.SetIsProductProc(true);
 		this->products.pop_back();
 		return true;
 	}
@@ -28,18 +27,21 @@ bool WorkplaceLine::PutProductToWorkplace()
 
 bool WorkplaceLine::PutProductToWorkplaceLine(WorkplaceLine *workplaceLine)
 {
-	if (!this->workplace.GetIsEmpty() && !this->workplace.GetIsProductProc())
+	if (!this->workplace.GetIsEmpty() && !this->workplace.GetIsProductProc() &&
+		this->workplace.GetProcProductRef()->isProcessed)
 	{
 		if (workplaceLine->products.size() != 0)
 		{
-			workplaceLine->products.insert(workplaceLine->products.begin(), workplaceLine->workplace.GetProcProduct());
+			workplaceLine->products.insert(workplaceLine->products.begin(), this->workplace.GetProcProduct());
 		}
 		else
 		{
-			workplaceLine->products.push_back(workplaceLine->workplace.GetProcProduct());
+			workplaceLine->products.push_back(this->workplace.GetProcProduct());
 		}
 
+		workplaceLine->products[0].isProcessed = false;
 		this->workplace.SetIsEmpty(true);
+		this->workplace.GetProcProductRef()->isProcessed = false;
 		return true;
 	}
 	else

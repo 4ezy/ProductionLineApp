@@ -64,7 +64,10 @@ bool ProductionLine::ReleaseProcessedProduct()
 	if (!this->workplaceLines[this->workplaceLines.size() - 1].GetWorkplace().GetIsEmpty() &&
 		this->workplaceLines[this->workplaceLines.size() - 1].GetWorkplace().GetProcProduct().isProcessed)
 	{
-		this->workplaceLines[this->workplaceLines.size() - 1].GetWorkplaceRef()->SetIsEmpty(true);
+		this->workplaceLines[this->workplaceLines.size() - 1].
+			GetWorkplaceRef()->SetIsEmpty(true);
+		this->workplaceLines[this->workplaceLines.size() - 1].
+			GetWorkplaceRef()->GetProcProductRef()->isProcessed = false;
 		return true;
 	}
 	else

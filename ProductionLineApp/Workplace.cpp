@@ -16,11 +16,13 @@ Workplace::~Workplace()
 
 bool Workplace::ProcessProduct()
 {
-	if (!this->isEmpty && !this->isProductProc)
+	if (!this->isEmpty && !this->isProductProc &&
+		!this->procProduct.isProcessed)
 	{
 		this->isProductProc = true;
 		Sleep(this->procTime); // TODO: заменить на нормальное распределение
 		this->isProductProc = false;
+		this->procProduct.isProcessed = true;
 		return true;
 	}
 	else
@@ -65,6 +67,11 @@ void Workplace::SetProcProduct(Product procProduct)
 Product Workplace::GetProcProduct()
 {
 	return this->procProduct;
+}
+
+Product * Workplace::GetProcProductRef()
+{
+	return &this->procProduct;
 }
 
 void Workplace::SetProcTime(unsigned long procTime)
