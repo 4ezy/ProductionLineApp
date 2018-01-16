@@ -14,7 +14,7 @@ WorkplaceLine::~WorkplaceLine()
 bool WorkplaceLine::PutProductToWorkplace()
 {
 	if (this->workplace.GetIsEmpty() && !this->workplace.GetIsBlocked() &&
-		this->products.size() > 0)
+		this->products.size() > 0 && this->workplace.GetProcProductRef()->isProcessed == false)
 	{
 		this->workplace.SetProcProduct(this->products.back());
 		this->workplace.SetIsEmpty(false);

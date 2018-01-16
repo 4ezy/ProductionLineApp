@@ -27,6 +27,9 @@ public:
 	std::vector<Product>* GetDeferredProductsRef();
 	void SetStatistics(Statistics statistics);
 	Statistics GetStatistics();
+	bool IsLinesBlocked();
+	void BlockLines();
+	void UnblockLines();
 private:
 	unsigned long simulationTime;
 	unsigned long putProductTimeInterval;

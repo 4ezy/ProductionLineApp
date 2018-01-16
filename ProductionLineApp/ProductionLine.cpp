@@ -49,20 +49,13 @@ bool ProductionLine::PutNewProduct(Product product)
 
 void ProductionLine::DeferProduct(Product product)
 {
-	if (this->deferredProducts.size() != 0)
-	{
-		this->deferredProducts.insert(this->deferredProducts.begin(), product);
-	}
-	else
-	{
-		this->deferredProducts.push_back(product);
-	}
+	this->deferredProducts.push_back(product);
 }
 
 bool ProductionLine::ReleaseProcessedProduct()
 {
-	if (!this->workplaceLines[this->workplaceLines.size() - 1].GetWorkplace().GetIsEmpty() &&
-		this->workplaceLines[this->workplaceLines.size() - 1].GetWorkplace().GetProcProduct().isProcessed)
+	if (!this->workplaceLines[this->workplaceLines.size() - 1].GetWorkplaceRef()->GetIsEmpty() &&
+		this->workplaceLines[this->workplaceLines.size() - 1].GetWorkplaceRef()->GetProcProductRef()->isProcessed)
 	{
 		this->workplaceLines[this->workplaceLines.size() - 1].
 			GetWorkplaceRef()->SetIsEmpty(true);
@@ -132,4 +125,48 @@ void ProductionLine::SetStatistics(Statistics statistics)
 Statistics ProductionLine::GetStatistics()
 {
 	return this->statistics;
+}
+
+bool ProductionLine::IsLinesBlocked()
+{
+	bool isBlocked = false;
+
+	if (this->workplaceLines.size() > 1)
+	{
+		for (size_t i = 0; i < this->workplaceLines.size() - 1; i++)
+		{
+			if (this->workplaceLines[i].GetWorkplaceRef()->GetIsBlocked())
+			{
+				isBlocked = true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+	}
+
+	return isBlocked;
+}
+
+void ProductionLine::BlockLines()
+{
+	if (this->workplaceLines.size() > 1)
+	{
+		for (size_t i = 0; i < this->workplaceLines.size() - 1; i++)
+		{
+			this->workplaceLines[i].GetWorkplaceRef()->SetIsBlocked(true);
+		}
+	}
+}
+
+void ProductionLine::UnblockLines()
+{
+	if (this->workplaceLines.size() > 1)
+	{
+		for (size_t i = 0; i < this->workplaceLines.size() - 1; i++)
+		{
+			this->workplaceLines[i].GetWorkplaceRef()->SetIsBlocked(false);
+		}
+	}
 }
