@@ -27,6 +27,7 @@ public:
 	std::vector<Product>* GetDeferredProductsRef();
 	void SetStatistics(Statistics statistics);
 	Statistics GetStatistics();
+	Statistics* GetStatisticsRef();
 	bool IsLinesBlocked();
 	void BlockLines();
 	void UnblockLines();

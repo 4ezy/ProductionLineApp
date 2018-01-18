@@ -127,6 +127,11 @@ Statistics ProductionLine::GetStatistics()
 	return this->statistics;
 }
 
+Statistics * ProductionLine::GetStatisticsRef()
+{
+	return &this->statistics;
+}
+
 bool ProductionLine::IsLinesBlocked()
 {
 	bool isBlocked = false;
