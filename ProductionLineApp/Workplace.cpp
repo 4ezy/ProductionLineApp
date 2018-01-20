@@ -15,7 +15,7 @@ Workplace::~Workplace()
 {
 }
 
-bool Workplace::ProcessProduct()
+bool Workplace::ProcessProduct(Statistics* stat)
 {
 	if (!this->isEmpty && !this->isProductProc &&
 		!this->procProduct.isProcessed)
@@ -34,9 +34,9 @@ bool Workplace::ProcessProduct()
 		}
 
 		distr *= 1000;
-
+		stat->avgProdProcTime += (unsigned long)distr;
 		this->isProductProc = true;
-		Sleep(distr); // TODO: заменить на нормальное распределение
+		Sleep((unsigned long)distr);
 		this->isProductProc = false;
 		this->procProduct.isProcessed = true;
 		return true;

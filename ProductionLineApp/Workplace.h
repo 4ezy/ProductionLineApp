@@ -1,6 +1,7 @@
 #pragma once
 #include "Product.h"
 #include <random>
+#include "Statistics.h"
 
 class Workplace
 {
@@ -8,7 +9,7 @@ public:
 	Workplace(unsigned long procTime);
 	~Workplace();
 
-	bool ProcessProduct();
+	bool ProcessProduct(Statistics* stat);
 
 	void SetIsEmpty(bool isEmpty);
 	bool GetIsEmpty();

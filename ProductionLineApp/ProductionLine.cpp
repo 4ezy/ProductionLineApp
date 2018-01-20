@@ -21,6 +21,8 @@ ProductionLine::ProductionLine(unsigned int workplaceLineCount, unsigned int pro
 
 		this->workplaceLines.push_back(WorkplaceLine(workplaceLineCapacity, workplaceProcTime));
 	}
+
+	memset(this->GetStatisticsRef(), 0, sizeof(Statistics));
 }
 
 ProductionLine::~ProductionLine()
