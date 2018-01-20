@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Workplace.h"
+#include <time.h>
 
 Workplace::Workplace(unsigned long procTime)
 {
@@ -19,8 +20,23 @@ bool Workplace::ProcessProduct()
 	if (!this->isEmpty && !this->isProductProc &&
 		!this->procProduct.isProcessed)
 	{
+		unsigned long t = (unsigned long)time(NULL);
+		generator = std::default_random_engine(t);
+		long double val = this->procTime;
+		val /= 1000;
+		long double distr = val;
+		std::normal_distribution<double> distribution(distr);
+		distr = distribution(generator);
+
+		while (distr <= 0 || distr >(val + 0.5) || distr < (val - 0.5))
+		{
+			distr = distribution(generator);
+		}
+
+		distr *= 1000;
+
 		this->isProductProc = true;
-		Sleep(this->procTime); // TODO: заменить на нормальное распределение
+		Sleep(distr); // TODO: заменить на нормальное распределение
 		this->isProductProc = false;
 		this->procProduct.isProcessed = true;
 		return true;

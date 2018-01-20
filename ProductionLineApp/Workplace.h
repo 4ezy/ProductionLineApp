@@ -1,5 +1,6 @@
 #pragma once
 #include "Product.h"
+#include <random>
 
 class Workplace
 {
@@ -26,4 +27,5 @@ private:
 	bool isProductProc;
 	unsigned long procTime;
 	Product procProduct;
+	std::default_random_engine generator;
 };
