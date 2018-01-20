@@ -9,7 +9,7 @@ public:
 	Workplace(unsigned long procTime);
 	~Workplace();
 
-	bool ProcessProduct(Statistics* stat);
+	bool ProcessProduct();
 
 	void SetIsEmpty(bool isEmpty);
 	bool GetIsEmpty();

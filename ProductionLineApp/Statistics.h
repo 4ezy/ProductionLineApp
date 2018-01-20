@@ -2,11 +2,11 @@
 
 struct Statistics
 {
-	unsigned long fstWorkplaceLoad;	// процент загрузки рабочих мест
-	unsigned long sndWorkplaceLoad;
+	long double fstWorkplaceLoad;	// процент загрузки рабочих мест
+	long double sndWorkplaceLoad;
 	unsigned long avgProdProcTime;	// миллисекундах
 	unsigned long deferredProductsCount;
-	unsigned long fstWorkplaceAvgQueue;
-	unsigned long sndWorkplaceAvgQueue;
-	unsigned long fstWorkplaceBlockingTime;	// миллисекундах
+	long double fstWorkplaceAvgQueue;
+	long double sndWorkplaceAvgQueue;
+	long double fstWorkplaceBlockingTime;	// миллисекундах
 };
